@@ -20,7 +20,8 @@ Nodelink.Link = SC.Record.extend(
     @property {Nodelink.Node}
   */
   startNode: SC.Record.toOne('Nodelink.Node', {
-    inverse: 'outLinks'
+    inverse: 'outLinks',
+    isMaster: YES
   }),
 
   /**
@@ -29,7 +30,8 @@ Nodelink.Link = SC.Record.extend(
     @property {Nodelink.Node}
   */
   endNode:  SC.Record.toOne('Nodelink.Node', {
-    inverse: 'inLinks'
+    inverse: 'inLinks',
+    isMaster: YES
   })
   
 });

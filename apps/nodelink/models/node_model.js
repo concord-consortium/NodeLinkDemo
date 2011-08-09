@@ -29,23 +29,21 @@ Nodelink.Node = SC.Record.extend(
   y: SC.Record.attr(Number),
   
   /**
-    Links (edges) leaving this node
+    Links (edges) leaving this node. Calculated as all Links with startNode = <this record>.
     
     @property {Nodelink.Link[]}
   */
-  outLinks: SC.Record.toMany('Nodelink.Link', {
-    inverse: 'startNode',
-    isMaster: YES
-  }),
+  outLinks: function () {
+    return this.get('store').find(SC.Query.local(Nodelink.Link, "startNode.id = '%@'".fmt(this.get('id'))));
+  }.property('id').cacheable(),
   
   /**
-    Links (edges) entering this node
+    Links (edges) entering this node. Calculated as all Links with endNode = <this record>.
     
     @property {Nodelink.Link[]}
   */
-  inLinks: SC.Record.toMany('Nodelink.Link', {
-    inverse: 'endNode',
-    isMaster: YES
-  })
-  
+  inLinks: function () {
+    return this.get('store').find(SC.Query.local(Nodelink.Link, "endNode.id = '%@'".fmt(this.get('id'))));
+  }.property('id').cacheable()
+
 });

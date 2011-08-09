@@ -8,4 +8,18 @@ sc_require('models/node_model');
 
 Nodelink.Node.FIXTURES = [
 
+  { guid:     'node1',
+    x:        100,
+    y:        100,
+    inLinks:  [],
+    outLinks: ['link1']
+  },
+  
+  { guid:     'node2',
+    x:        200,
+    y:        100,
+    inLinks:  ['link1'],
+    outLinks: []
+  }
+  
 ];

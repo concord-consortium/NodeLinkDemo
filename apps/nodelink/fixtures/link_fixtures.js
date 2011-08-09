@@ -7,5 +7,10 @@
 sc_require('models/link_model');
 
 Nodelink.Link.FIXTURES = [
+  
+  { guid:      'link1',
+    startNode: 'node1',
+    endNode:   'node2'
+  }
 
 ];

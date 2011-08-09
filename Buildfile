@@ -1,12 +1,15 @@
 # ==========================================================================
 # Project:   Nodelink
-# Copyright: @2011 My Company, Inc.
+# Copyright: @2011 Concord Consortium
 # ==========================================================================
 
-# This is your Buildfile, which sets build settings for your project.
-# For example, this tells SproutCore's build tools that your requires
-# the SproutCore framework.
 config :all, :required => :sproutcore
 
-# In addition to this Buildfile, which gives settings for your entire project,
-# each of your apps has its own Buildfile with settings specific to that app.
+# No incantation like:
+#
+#   config :raphael_views, :required => :raphael
+#
+# inside RaphaelViews' own Buildfile seems to work, so we include the dependency of RaphaelViews on Raphael here. 
+# I don't know why this is.
+
+config 'raphael_views/raphael_views', :required => 'raphael_views/raphael'

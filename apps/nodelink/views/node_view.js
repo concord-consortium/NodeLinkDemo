@@ -14,7 +14,23 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
 /** @scope Nodelink.NodeView.prototype */ {
 
   contentDisplayProperties: 'x y'.w(),
+  displayProperties: 'bodyColor borderColor borderOpacity bodyWidth bodyHeight borderWidth'.w(),
+
+  bodyColor: '#CCCCCC',
   
+  borderColor: function () {
+    return this.get('isSelected') ? '#FFFF00' : '#AAAAAA';
+  }.property('isSelected'),
+  
+  borderOpacity: 1.0,
+  
+  bodyWidth: 50,
+  bodyHeight: 50,
+  
+  borderWidth: function () {
+    return this.get('isSelected') ? 4 : 2;
+  }.property('isSelected'),
+
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.rect().attr(attrs);
   },
@@ -23,15 +39,19 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
     var content = this.get('content'),
         x = content.get('x'),
         y = content.get('y'),
+
         attrs = {
           x: x,
           y: y,
-          width: 50,
-          height: 50,
           r: 5,
-          stroke: '#AAAAAA',
-          fill: '#CCCCCC'
+          width:            this.get('bodyWidth'),
+          height:           this.get('bodyHeight'),
+          fill:             this.get('bodyColor'),
+          stroke:           this.get('borderColor'),
+          'stroke-width':   this.get('borderWidth'),
+          'stroke-opacity': this.get('borderOpacity')
         },
+
         rect;
     
     if (firstTime) {

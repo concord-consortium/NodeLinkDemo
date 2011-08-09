@@ -2,23 +2,21 @@
 // Project:   Nodelink - mainPage
 // Copyright: @2011 Concord Consortium
 // ==========================================================================
-/*globals Nodelink */
+/*globals Nodelink RaphaelViews */
 
-// This page describes the main user interface for your application.  
 Nodelink.mainPage = SC.Page.design({
 
-  // The main pane is made visible on screen as soon as your app is loaded.
-  // Add childViews to this pane for views to display immediately on page 
-  // load.
   mainPane: SC.MainPane.design({
-    childViews: 'labelView'.w(),
+    childViews: 'raphaelCanvasView'.w(),
     
-    labelView: SC.LabelView.design({
-      layout: { centerX: 0, centerY: 0, width: 200, height: 18 },
-      textAlign: SC.ALIGN_CENTER,
-      tagName: "h1", 
-      value: "Welcome to SproutCore!"
-    })
+    raphaelCanvasView: RaphaelViews.RaphaelCanvasView.design({
+      childViews: 'diagramView'.w(),
+      
+      diagramView: RaphaelViews.RaphaelCollectionView.design({
+        contentBinding:        'Nodelink.diagramController.arrangedObjects',
+        contentExampleViewKey: 'exampleView'
+      })
+    })    
   })
 
 });

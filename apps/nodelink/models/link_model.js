@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals Nodelink */
 
+sc_require('views/link_view');
+
 /** @class
 
   An edge, or "link", in the directed graph being diagrammed in this demo app.
@@ -32,6 +34,8 @@ Nodelink.Link = SC.Record.extend(
   endNode:  SC.Record.toOne('Nodelink.Node', {
     inverse: 'inLinks',
     isMaster: YES
-  })
+  }),
+  
+  exampleView: Nodelink.LinkView
   
 });

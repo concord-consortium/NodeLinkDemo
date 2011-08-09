@@ -4,6 +4,8 @@
 // ==========================================================================
 /*globals Nodelink */
 
+sc_require('views/node_view');
+
 /** @class
 
   A node in the directed graph being diagrammed in this demo app.
@@ -44,6 +46,8 @@ Nodelink.Node = SC.Record.extend(
   */
   inLinks: function () {
     return this.get('store').find(SC.Query.local(Nodelink.Link, "endNode.id = '%@'".fmt(this.get('id'))));
-  }.property('id').cacheable()
+  }.property('id').cacheable(),
+  
+  exampleView: Nodelink.NodeView
 
 });

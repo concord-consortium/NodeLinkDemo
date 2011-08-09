@@ -13,6 +13,8 @@
 //
 Nodelink.main = function main() {
 
+  Nodelink.diagramController.startUpdatingContent();
+  
   // Step 1: Instantiate Your Views
   // The default code here will make the mainPane for your application visible
   // on screen.  If you app gets any level of complexity, you will probably 

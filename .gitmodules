@@ -1,0 +1,6 @@
+[submodule "frameworks/sproutcore"]
+	path = frameworks/sproutcore
+	url = https://github.com/sproutcore/sproutcore.git
+[submodule "frameworks/raphael_views"]
+	path = frameworks/raphael_views
+	url = https://github.com/rklancer/RaphaelViews.git

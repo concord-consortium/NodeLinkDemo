@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   Nodelink - mainPage
-// Copyright: @2011 My Company, Inc.
+// Copyright: @2011 Concord Consortium
 // ==========================================================================
 /*globals Nodelink */
 

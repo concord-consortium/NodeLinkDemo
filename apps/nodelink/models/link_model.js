@@ -36,6 +36,9 @@ Nodelink.Link = SC.Record.extend(
     isMaster: YES
   }),
   
+  /**
+    View class to use to display this object in a collection view.
+  */
   exampleView: Nodelink.LinkView
   
 });

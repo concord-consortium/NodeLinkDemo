@@ -33,7 +33,7 @@ Nodelink.Node = SC.Record.extend(
   /**
     Links (edges) leaving this node. Calculated as all Links with startNode = <this record>.
     
-    @property {Nodelink.Link[]}
+    @property {RecordArray}
   */
   outLinks: function () {
     return this.get('store').find(SC.Query.local(Nodelink.Link, "startNode.id = '%@'".fmt(this.get('id'))));
@@ -42,12 +42,15 @@ Nodelink.Node = SC.Record.extend(
   /**
     Links (edges) entering this node. Calculated as all Links with endNode = <this record>.
     
-    @property {Nodelink.Link[]}
+    @property {RecordArray}
   */
   inLinks: function () {
     return this.get('store').find(SC.Query.local(Nodelink.Link, "endNode.id = '%@'".fmt(this.get('id'))));
   }.property('id').cacheable(),
   
+  /**
+    View class to use to display this object in a collection view.
+  */
   exampleView: Nodelink.NodeView
 
 });

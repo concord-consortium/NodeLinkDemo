@@ -11,7 +11,7 @@ Nodelink.mainPage = SC.Page.design({
     
     raphaelCanvasView: RaphaelViews.RaphaelCanvasView.design({
       
-      layout: { left: 20, right: 20, top: 20, bottom: 20 },
+      layout: { top: 20, left: 20, width: 404, height: 304 },
       
       childViews: 'diagramView'.w(),
       

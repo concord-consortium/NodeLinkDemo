@@ -111,13 +111,25 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
   
   drag: function (evt) {
     var content = this.get('content'),
-        x = content.get('x'),
-        y = content.get('y');
+        x = content.get('x') + evt.pageX - this._dragX,
+        y = content.get('y') + evt.pageY - this._dragY;
 
     if ( !this.get('isDragging') ) return;
-
-    content.set('x', x + evt.pageX - this._dragX);
-    content.set('y', y + evt.pageY - this._dragY);
+    
+    // FIXME this code to limit to the borders of the parent container could be simplified with local vars, and by 
+    // double-checking the geometry and arithmetic:
+    if (x < this.get('borderWidth')) x = this.get('borderWidth');
+    if (x + this.get('bodyWidth') > this.getPath('parentView.width') + this.getPath('parentView.borderWidth')) {
+      x = this.getPath('parentView.width') + this.getPath('parentView.borderWidth') - this.get('bodyWidth');
+    }
+    
+    if (y < this.get('borderWidth')) y = this.get('borderWidth');
+    if (y + this.get('bodyHeight') > this.getPath('parentView.height') + this.getPath('parentView.borderWidth')) {
+      y = this.getPath('parentView.height') + this.getPath('parentView.borderWidth') - this.get('bodyHeight');
+    }
+    
+    content.set('x', x);
+    content.set('y', y);
 
     this._dragX = evt.pageX;
     this._dragY = evt.pageY;

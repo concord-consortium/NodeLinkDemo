@@ -34,6 +34,23 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
     return this.get('isSelected') ? 4 : 2;
   }.property('isSelected'),
 
+  collectionView: function () {
+    var ret = this.get('parentView');
+    
+    if (ret && ret.kindOf && ret.kindOf(SC.CollectionView)) {
+      return ret;
+    }
+    else {
+      ret = ret.get('parentView');
+      if (ret && ret.kindOf && ret.kindOf(SC.CollectionView)) {
+        return ret;
+      }
+      else {
+        return null;
+      }
+    }
+  }.property('parentView').cacheable(),
+  
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.rect().attr(attrs);
   },
@@ -105,16 +122,16 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
     this._dragX = evt.pageX;
     this._dragY = evt.pageY;
     this._didDragBody = YES;
-  },
+  },  
   
   endDrag: function (evt) {
-    var pv = this.get('parentView');
+    var cv = this.get('collectionView');
     
     if (!this._didDragBody) {
-      pv.mouseDown(this._mouseDownEvent);
-      pv.mouseUp(evt);
+      cv.mouseDown(this._mouseDownEvent);    
+      cv.mouseUp(evt);
     }
-      
+
     this.drag(evt);
     
     this.$().css('cursor', 'default');

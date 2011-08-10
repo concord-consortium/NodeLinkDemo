@@ -57,6 +57,8 @@ Nodelink.RectView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
       rect = this.get('raphaelObject');
       rect.attr(attrs);
     }
+    
+    this.renderChildViews(context, firstTime);
   }
   
 });

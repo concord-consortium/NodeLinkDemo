@@ -4,9 +4,6 @@
 // ==========================================================================
 /*globals Nodelink */
 
-sc_require('models/link_model');
-sc_require('models/node_model');
-
 /** @class
 
   The content of this DiagramController is the (auto-updating) union of all Nodes and Links in the application. A 

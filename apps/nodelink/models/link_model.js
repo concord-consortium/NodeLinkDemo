@@ -21,20 +21,14 @@ Nodelink.Link = SC.Record.extend(
     
     @property {Nodelink.Node}
   */
-  startNode: SC.Record.toOne('Nodelink.Node', {
-    inverse: 'outLinks',
-    isMaster: YES
-  }),
+  startNode: SC.Record.toOne('Nodelink.Node'),
 
   /**
     The node this link points toward
     
     @property {Nodelink.Node}
   */
-  endNode:  SC.Record.toOne('Nodelink.Node', {
-    inverse: 'inLinks',
-    isMaster: YES
-  }),
+  endNode:  SC.Record.toOne('Nodelink.Node'),
   
   /**
     View class to use to display this object in a collection view.

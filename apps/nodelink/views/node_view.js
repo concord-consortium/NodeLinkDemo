@@ -100,7 +100,7 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
   
   startDrag: function (evt) {
     // our layer doesn't respect SC.Cursor, so set the cursors manually
-    this.$().css('cursor', 'move');
+    this.get('parentView').$().css('cursor', 'move');
     
     this.set('isDragging', YES);
     this._dragX = evt.pageX;
@@ -146,7 +146,7 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
 
     this.drag(evt);
     
-    this.$().css('cursor', 'default');
+    this.get('parentView').$().css('cursor', 'default');
     this.set('isDragging', NO); 
   }
   

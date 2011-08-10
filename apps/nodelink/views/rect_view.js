@@ -36,19 +36,19 @@ Nodelink.RectView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
     var   borderWidth = this.get('borderWidth'),
     
           attrs = {
-          x:                this.get('x') + borderWidth,
-          y:                this.get('y') + borderWidth,
-          width:            this.get('width'),
-          height:           this.get('height'),
-          r:                this.get('cornerRadius'),
-          fill:             this.get('bodyColor'),
-          stroke:           this.get('borderColor'),
-          'stroke-width':   borderWidth,
-          'stroke-opacity': this.get('borderOpacity'),
-          'fill-opacity':   this.get('bodyOpacity')
-        },
+            x:                this.get('x') + borderWidth,
+            y:                this.get('y') + borderWidth,
+            width:            this.get('width'),
+            height:           this.get('height'),
+            r:                this.get('cornerRadius'),
+            fill:             this.get('bodyColor'),
+            stroke:           this.get('borderColor'),
+            'stroke-width':   borderWidth,
+            'stroke-opacity': this.get('borderOpacity'),
+            'fill-opacity':   this.get('bodyOpacity')
+          },
 
-        rect;
+          rect;
     
     if (firstTime) {
       context.callback(this, this.renderCallback, attrs);

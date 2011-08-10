@@ -15,8 +15,9 @@ Nodelink.RectView = RaphaelViews.RaphaelView.extend(
 
   displayProperties: 'x y width height cornerRadius bodyColor borderColor borderWidth bodyOpacity'.w(),
 
-  // PROPERTIES
-  // (override these as needed)
+
+  // PROPERTIES (override these as needed)
+  
   
   x: 0,
   y: 0,
@@ -42,13 +43,13 @@ Nodelink.RectView = RaphaelViews.RaphaelView.extend(
     var   borderWidth = this.get('borderWidth'),
     
           attrs = {
-            x:                this.get('x') + borderWidth,
-            y:                this.get('y') + borderWidth,
-            width:            this.get('width'),
-            height:           this.get('height'),
-            r:                this.get('cornerRadius'),
-            fill:             this.get('bodyColor'),
-            stroke:           this.get('borderColor'),
+            'x':              this.get('x') + borderWidth,
+            'y':              this.get('y') + borderWidth,
+            'width':          this.get('width'),
+            'height':         this.get('height'),
+            'r':              this.get('cornerRadius'),
+            'fill':           this.get('bodyColor'),
+            'stroke':         this.get('borderColor'),
             'stroke-width':   borderWidth,
             'stroke-opacity': this.get('borderOpacity'),
             'fill-opacity':   this.get('bodyOpacity')

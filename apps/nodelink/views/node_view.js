@@ -15,6 +15,10 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(
 
   displayProperties: 'content.x content.y bodyColor borderColor borderOpacity bodyWidth bodyHeight borderWidth'.w(),
 
+
+  // PROPERTIES
+  
+  
   isSelected: NO,
   isDragging: NO,
   
@@ -50,6 +54,10 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(
     }
   }.property('parentView').cacheable(),
   
+  
+  // RENDER METHODS
+  
+  
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.rect().attr(attrs);
   },
@@ -79,6 +87,10 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(
       rect.attr(attrs);
     }
   },
+  
+  
+  // EVENT METHODS
+  
   
   mouseDown: function (evt) {
     this.startDrag(evt);

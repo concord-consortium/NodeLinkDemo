@@ -15,6 +15,10 @@ Nodelink.LinkView = RaphaelViews.RaphaelView.extend(
 
   displayProperties: 'content.endNode.x content.endNode.y content.startNode.x content.startNode.y lineColor borderColor borderOpacity lineWidth borderWidth'.w(),
   
+  
+  // PROPERTIES
+  
+  
   lineColor: '#0000AA',
   borderColor: '#FFFF00',
   
@@ -24,7 +28,11 @@ Nodelink.LinkView = RaphaelViews.RaphaelView.extend(
   
   lineWidth: 3,
   borderWidth: 3,
+ 
+ 
+  // RENDER METHODS
   
+   
   renderCallback: function (raphaelCanvas, lineAttrs, borderAttrs) {
     return raphaelCanvas.set().push(
       raphaelCanvas.path().attr(borderAttrs),

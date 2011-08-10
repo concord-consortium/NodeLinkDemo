@@ -10,12 +10,14 @@
 
   @extends SC.View
 */
-Nodelink.RectView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
+Nodelink.RectView = RaphaelViews.RaphaelView.extend(
 /** @scope Nodelink.NodeView.prototype */ {
 
   displayProperties: 'x y width height cornerRadius bodyColor borderColor borderWidth bodyOpacity'.w(),
 
-  // default values:
+  // PROPERTIES
+  // (override these as needed)
+  
   x: 0,
   y: 0,
   width: 0,
@@ -26,6 +28,10 @@ Nodelink.RectView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
   borderWidth: 0,
   borderOpacity: 1.0,
   bodyOpacity: 1.0,
+  
+  
+  // RENDER METHODS
+  
   
   renderCallback: function (raphaelCanvas, attrs) {
     return raphaelCanvas.rect().attr(attrs);

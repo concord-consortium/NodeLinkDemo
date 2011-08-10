@@ -16,6 +16,9 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
   contentDisplayProperties: 'x y'.w(),
   displayProperties: 'bodyColor borderColor borderOpacity bodyWidth bodyHeight borderWidth'.w(),
 
+  isSelected: NO,
+  isDragging: NO,
+  
   bodyColor: '#CCCCCC',
   
   borderColor: function () {
@@ -61,6 +64,61 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
       rect = this.get('raphaelObject');
       rect.attr(attrs);
     }
+  },
+  
+  mouseDown: function (evt) {
+    this.startDrag(evt);
+    return YES;
+  },
+  
+  mouseDragged: function (evt) {
+    this.drag(evt);
+    return YES;
+  },
+  
+  mouseUp: function (evt) {
+    this.endDrag(evt);
+    return YES;
+  },
+  
+  startDrag: function (evt) {
+    // our layer doesn't respect SC.Cursor, so set the cursors manually
+    this.$().css('cursor', 'move');
+    
+    this.set('isDragging', YES);
+    this._dragX = evt.pageX;
+    this._dragY = evt.pageY;
+    this._mouseDownEvent = evt;
+    this._didDragBody = NO;
+  },
+  
+  drag: function (evt) {
+    var content = this.get('content'),
+        x = content.get('x'),
+        y = content.get('y');
+
+    if ( !this.get('isDragging') ) return;
+
+    content.set('x', x + evt.pageX - this._dragX);
+    content.set('y', y + evt.pageY - this._dragY);
+
+    this._dragX = evt.pageX;
+    this._dragY = evt.pageY;
+    this._didDragBody = YES;
+  },
+  
+  endDrag: function (evt) {
+    var pv = this.get('parentView');
+    
+    if (!this._didDragBody) {
+      pv.mouseDown(this._mouseDownEvent);
+      pv.mouseUp(evt);
+    }
+      
+    this.drag(evt);
+    
+    this.$().css('cursor', 'default');
+    this.set('isDragging', NO); 
   }
   
 });

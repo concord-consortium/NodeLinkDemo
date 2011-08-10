@@ -10,11 +10,10 @@
 
   @extends SC.View
 */
-Nodelink.LinkView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
+Nodelink.LinkView = RaphaelViews.RaphaelView.extend(
 /** @scope Nodelink.LinkView.prototype */ {
 
-  contentDisplayProperties: 'endNode.x endNode.y startNode.x startNode.y'.w(),
-  displayProperties: 'lineColor borderColor borderOpacity lineWidth borderWidth'.w(),
+  displayProperties: 'content.endNode.x content.endNode.y content.startNode.x content.startNode.y lineColor borderColor borderOpacity lineWidth borderWidth'.w(),
   
   lineColor: '#0000AA',
   borderColor: '#FFFF00',

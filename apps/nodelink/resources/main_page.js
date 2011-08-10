@@ -10,11 +10,28 @@ Nodelink.mainPage = SC.Page.design({
     childViews: 'raphaelCanvasView'.w(),
     
     raphaelCanvasView: RaphaelViews.RaphaelCanvasView.design({
-      childViews: 'diagramView'.w(),
+      
+      layout: { left: 20, right: 20, top: 20, bottom: 20 },
+      
+      childViews: 'backgroundView diagramView'.w(),
+      
+      backgroundView: Nodelink.RectView.design({
+        cornerRadius: 5,
+        width: 400,
+        height: 300,
+        borderColor: '#CCCCCC',
+        borderWidth: 2,
+      
+        mouseDown: function (evt) {
+          this.setPath('parentView.diagramView.selection', null);
+          return YES;
+        }
+      }),
       
       diagramView: RaphaelViews.RaphaelCollectionView.design({
         contentBinding:        'Nodelink.diagramController.arrangedObjects',
-        contentExampleViewKey: 'exampleView'
+        contentExampleViewKey: 'exampleView',
+        selectOnMouseDown:     NO
       })
     })    
   })

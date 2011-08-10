@@ -43,17 +43,17 @@ Nodelink.LinkView = RaphaelViews.RaphaelView.extend(
         pathStr   = ['M', startX + 25, startY + 25, 'L', endX + 25, endY + 25].join(' '),
         
         borderAttrs = {
-          path: pathStr,
-          stroke: this.get('borderColor'),
-          opacity: this.get('borderOpacity'),
-          'stroke-width': this.get('lineWidth') + 2 * this.get('borderWidth'),  // the border "around" the line is really a fat line behind it
+          'path':           pathStr,
+          'stroke':         this.get('borderColor'),
+          'opacity':        this.get('borderOpacity'),
+          'stroke-width':   this.get('lineWidth') + 2 * this.get('borderWidth'),  // the border "around" the line is really a fat line behind it
           'stroke-linecap': 'round'
         },
         
         lineAttrs = {
-          path: pathStr,          
-          stroke: this.get('lineColor'),
-          'stroke-width': this.get('lineWidth'),
+          'path':           pathStr,
+          'stroke':         this.get('lineColor'),
+          'stroke-width':   this.get('lineWidth'),
           'stroke-linecap': 'round'
         },
         

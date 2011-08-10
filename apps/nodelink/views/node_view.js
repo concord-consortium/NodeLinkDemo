@@ -56,17 +56,15 @@ Nodelink.NodeView = RaphaelViews.RaphaelView.extend(
   
   render: function (context, firstTime) {
     var content = this.get('content'),
-        x = content.get('x'),
-        y = content.get('y'),
 
         attrs = {
-          x: x,
-          y: y,
-          r: 5,
-          width:            this.get('bodyWidth'),
-          height:           this.get('bodyHeight'),
-          fill:             this.get('bodyColor'),
-          stroke:           this.get('borderColor'),
+          'x':              content.get('x'),
+          'y':              content.get('y'),
+          'r':              5,
+          'width':          this.get('bodyWidth'),
+          'height':         this.get('bodyHeight'),
+          'fill':           this.get('bodyColor'),
+          'stroke':         this.get('borderColor'),
           'stroke-width':   this.get('borderWidth'),
           'stroke-opacity': this.get('borderOpacity')
         },

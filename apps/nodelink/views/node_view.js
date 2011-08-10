@@ -10,11 +10,10 @@
 
   @extends SC.View
 */
-Nodelink.NodeView = RaphaelViews.RaphaelView.extend(SC.ContentDisplay,
+Nodelink.NodeView = RaphaelViews.RaphaelView.extend(
 /** @scope Nodelink.NodeView.prototype */ {
 
-  contentDisplayProperties: 'x y'.w(),
-  displayProperties: 'bodyColor borderColor borderOpacity bodyWidth bodyHeight borderWidth'.w(),
+  displayProperties: 'content.x content.y bodyColor borderColor borderOpacity bodyWidth bodyHeight borderWidth'.w(),
 
   isSelected: NO,
   isDragging: NO,
